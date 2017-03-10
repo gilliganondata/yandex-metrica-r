@@ -39,6 +39,8 @@ mytoken <- oauth2.0_token(yandex_endpoint, myapp,
 
 token_full <- readRDS(".httr-oauth")
 token <- names(token_full[1])
+# Note: the above returns: 9e25df6a69731d3ac1738071c5a04bf5
+# That's what is used in the string below
 
 test_data <- GET("https://api-metrika.yandex.ru/stat/v1/data.csv",
                  query = list (id = "42846864",
@@ -47,13 +49,8 @@ test_data <- GET("https://api-metrika.yandex.ru/stat/v1/data.csv",
                                limit= "5",
                                oauth_token=token))
 
-# test_data <- GET("https://api-metrika.yandex.ru/stat/v1/data",
-#                  query = list (id = "42846864",
-#                                metrics="ym:s:avgPageViews",
-#                                dimensions="ym:s:operatingSystem",
-#                                limit= "5",
-#                                oauth_token="9e25df6a69731d3ac1738071c5a04bf5"))
-
+# This just returns a list with the http_status of the data. It's been 
+# coming back as Client error: (403) Forbidden
 check_stat <- http_status(test_data)
 
 
