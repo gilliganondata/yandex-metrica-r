@@ -1,4 +1,4 @@
-# Demo script to pull some data from Yandex Metrics
+# Demo script to pull some data from Yandex Metrica
 
 # This requires setting up an OAuth access token, which you can do
 # by clicking on "API" in the global navigation once logged into Yandex Metrics.
